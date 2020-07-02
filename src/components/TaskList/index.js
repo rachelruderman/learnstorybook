@@ -1,6 +1,6 @@
 import React from 'react';
 import { Task } from '../Task';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { propTypes } from './propTypes';
 import { TASK_PINNED, TASK_ARCHIVED, TASK_INBOX } from '../../redux/_util/types';
 
@@ -8,13 +8,11 @@ export const TaskList = (props) => {
 
     const {
         isLoading,
-        tasks: allTasks,
     } = props;
 
     const dispatch = useDispatch();
 
-    console.log({allTasks})
-    const tasks = allTasks
+    const tasks = useSelector(state => state.tasks)
         .filter(({ state }) => [TASK_INBOX, TASK_PINNED].includes(state))
 
     const isEmpty = (tasks.length === 0);
