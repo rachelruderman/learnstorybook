@@ -1,5 +1,5 @@
 import React from 'react';
-import { Task } from './Task';
+import { Task } from './index';
 import { taskData } from './_util/taskData';
 import { actionsData } from './_util/actionsData';
 
