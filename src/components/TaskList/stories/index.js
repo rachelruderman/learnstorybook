@@ -18,6 +18,6 @@ export const Default = () => <TaskList tasks={defaultTasksData} {...actionsData}
 
 export const WithPinnedTasks = () => <TaskList tasks={withPinnedTasksData} {...actionsData} />;
 
-export const Loading = () => <TaskList loading tasks={[]} {...actionsData} />;
+export const Loading = () => <TaskList isLoading tasks={[]} {...actionsData} />;
 
 export const Empty = () => <TaskList tasks={[]} {...actionsData} />;
