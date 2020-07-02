@@ -1,4 +1,5 @@
 import React from 'react';
+import { propTypes } from './propTypes';
 
 export const Task = ({ task, onArchiveTask, onPinTask }) => {
 
@@ -47,3 +48,5 @@ export const Task = ({ task, onArchiveTask, onPinTask }) => {
         </div>
     );
 }
+
+Task.propTypes = propTypes;

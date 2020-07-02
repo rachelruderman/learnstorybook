@@ -1,5 +1,6 @@
 import React from 'react';
 import { Task } from '../Task';
+import { propTypes } from './propTypes';
 
 export const TaskList = ({ isLoading, tasks, onPinTask, onArchiveTask }) => {
     const events = {
@@ -58,3 +59,9 @@ export const TaskList = ({ isLoading, tasks, onPinTask, onArchiveTask }) => {
         </div>
     );
 }
+
+TaskList.propTypes = propTypes;
+
+TaskList.defaultProps = {
+    isLoading: false,
+};

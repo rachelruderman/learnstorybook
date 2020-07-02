@@ -3,7 +3,6 @@ import { TaskList } from '..';
 import { actionsData } from '../../Task/stories/data/actionsData';
 import { withPinnedTasksData } from './data/withPinnedTasksData';
 import { defaultTasksData } from './data/defaultTasksData';
-import { propTypes } from './propTypes';
 
 /*
     Decorators are a way to provide arbitrary wrappers to stories. In this case we’re using a decorator `key` on the default export to add some `padding` around the rendered component. They can also be used to wrap stories in “providers” –i.e. library components that set React context.
@@ -22,9 +21,3 @@ export const WithPinnedTasks = () => <TaskList tasks={withPinnedTasksData} {...a
 export const Loading = () => <TaskList isLoading tasks={[]} {...actionsData} />;
 
 export const Empty = () => <TaskList tasks={[]} {...actionsData} />;
-
-TaskList.propTypes = propTypes;
-
-TaskList.defaultProps = {
-    isLoading: false,
-};
