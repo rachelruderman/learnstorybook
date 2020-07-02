@@ -1,8 +1,20 @@
 import React from 'react';
 import { Task } from '../Task';
+import { useDispatch, useSelector } from 'react-redux';
+import { pinTask, archiveTask } from '../../lib/redux';
 import { propTypes } from './propTypes';
 
-export const TaskList = ({ isLoading, tasks, onPinTask, onArchiveTask }) => {
+export const TaskList = ({ isLoading }) => {
+
+    const dispatch = useDispatch();
+
+    const tasks = useSelector(state => state.tasks
+        .filter(task => ['TASK_INBOX', 'TASK_PINNED'].includes(task.state))
+    );
+
+    const onPinTask = (id) => dispatch(pinTask(id));
+    const onArchiveTask = (id) => dispatch(archiveTask(id));
+
     const events = {
         onPinTask,
         onArchiveTask,

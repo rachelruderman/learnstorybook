@@ -44,4 +44,4 @@ const initialState = [
 ];
 
 // We export the constructed redux store
-export default createStore(reducer, { tasks: initialState });
+export const reduxStore = createStore(reducer, { tasks: initialState });
