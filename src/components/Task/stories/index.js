@@ -1,7 +1,7 @@
 import React from 'react';
-import { Task } from './index';
-import { taskData } from './_util/taskData';
-import { actionsData } from './_util/actionsData';
+import { Task } from '../index';
+import { taskData } from './data/taskData';
+import { actionsData } from './data/actionsData';
 import { propTypes } from './propTypes';
 
 export default {
