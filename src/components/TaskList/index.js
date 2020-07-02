@@ -1,24 +1,20 @@
 import React from 'react';
 import { Task } from '../Task';
-import { useDispatch, useSelector } from 'react-redux';
-import { pinTask, archiveTask } from '../../lib/redux';
+import { useDispatch } from 'react-redux';
 import { propTypes } from './propTypes';
+import { TASK_PINNED, TASK_ARCHIVED } from '../../redux/_util/types';
 
-export const TaskList = ({ isLoading }) => {
+export const TaskList = (props) => {
+
+    const {
+        isLoading,
+        tasks: allTasks,
+    } = props;
 
     const dispatch = useDispatch();
 
-    const tasks = useSelector(state => state.tasks
-        .filter(task => ['TASK_INBOX', 'TASK_PINNED'].includes(task.state))
-    );
-
-    const onPinTask = (id) => dispatch(pinTask(id));
-    const onArchiveTask = (id) => dispatch(archiveTask(id));
-
-    const events = {
-        onPinTask,
-        onArchiveTask,
-    };
+    const tasks = allTasks
+        .filter(({ state }) => ['TASK_INBOX', 'TASK_PINNED'].includes(state))
 
     const isEmpty = (tasks.length === 0);
 
@@ -59,9 +55,17 @@ export const TaskList = ({ isLoading }) => {
     }
 
     const tasksInOrder = [
-        ...tasks.filter(task => task.state === 'TASK_PINNED'),
-        ...tasks.filter(task => task.state !== 'TASK_PINNED'),
+        ...tasks.filter(task => task.state === TASK_PINNED),
+        ...tasks.filter(task => task.state !== TASK_PINNED),
     ];
+
+    const onPinTask = (id) => dispatch({ type: TASK_PINNED, id });
+    const onArchiveTask = (id) => dispatch({ type: TASK_ARCHIVED, id });
+
+    const events = {
+        onPinTask,
+        onArchiveTask,
+    };
 
     return (
         <div className="list-items">
