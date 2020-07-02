@@ -1,5 +1,6 @@
 import React from 'react';
 import { propTypes } from './propTypes';
+import { TASK_ARCHIVED } from '../../redux/_util/types';
 
 export const Task = ({ task, onArchiveTask, onPinTask }) => {
 
@@ -10,7 +11,7 @@ export const Task = ({ task, onArchiveTask, onPinTask }) => {
             <label className="checkbox">
                 <input
                     type="checkbox"
-                    defaultChecked={state === 'TASK_ARCHIVED'}
+                    defaultChecked={state === TASK_ARCHIVED}
                     disabled={true}
                     name="checked"
                 />
@@ -27,7 +28,7 @@ export const Task = ({ task, onArchiveTask, onPinTask }) => {
     }
 
     const renderPin = () => {
-        const isArchived = (state === 'TASK_ARCHIVED');
+        const isArchived = (state === TASK_ARCHIVED);
         return (
             <div className="actions" onClick={event => event.stopPropagation()}>
                 {!isArchived && (
